@@ -15,7 +15,7 @@ module Incoming
         end
 
         @message = Mail.new do
-          header params['headers']
+          header params['headers'].force_encoding('ISO-8859-1').encode('UTF-8')
           header['Content-Transfer-Encoding'] = nil
 
           if encodings['text'].blank?
